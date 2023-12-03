@@ -6,6 +6,7 @@
 				<ul>
 					<li><a href="{{ route('property-container') }}">Property container</a></li>
 					<li><a href="{{ route('delegation') }}">Delegation</a></li>
+					<li><a href="{{ route('event-chanale') }}">Event chanale</a></li>
 				</ul>
 			</li>
 		</ul>

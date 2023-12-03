@@ -1,8 +1,7 @@
 <?php
 
-use App\Http\Controllers\DelegationController;
-use App\Http\Controllers\PropertyContainerController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FundamentalPatternsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +18,10 @@ Route::get('/', function () {
 	return view('welcome');
 });
 
-Route::prefix('fundamental')->group(function () {
-	Route::get('property-container', PropertyContainerController::class)->name('property-container');
-	Route::get('delegation', DelegationController::class)->name('delegation');
+Route::controller(FundamentalPatternsController::class)
+	->prefix('fundamental')
+	->group(function () {
+		Route::get('property-container', 'propertyContainer')->name('property-container');
+		Route::get('delegation', 'delegation')->name('delegation');
+		Route::get('event-chanale', 'eventChanale')->name('event-chanale');
 });
