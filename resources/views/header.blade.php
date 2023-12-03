@@ -1,0 +1,12 @@
+<header>
+	<h1>Design paterns</h1>
+		<ul>
+			<li>
+				<h2>Fundamental</h2>
+				<ul>
+					<li><a href="{{ route('property-container') }}">Property container</a></li>
+					<li><a href="{{ route('delegation') }}">Delegation</a></li>
+				</ul>
+			</li>
+		</ul>
+</header>
