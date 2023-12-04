@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
 use App\DesignPaterns\Fundamental\Delegation\AppMessenger;
+use App\DesignPaterns\Fundamental\EventChannel\EventChanaleProgramm;
 use App\DesignPaterns\Fundamental\PropertyContainer\ObjectClass;
 
 
@@ -47,6 +48,7 @@ class FundamentalPatternsController extends Controller
 
 	public function eventChanale(): View|Factory
 	{
+		(new EventChanaleProgramm())->run();
 
 		return view('welcome');
 	}
