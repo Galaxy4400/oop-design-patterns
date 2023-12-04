@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CreationalPatternsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FundamentalPatternsController;
 
@@ -24,4 +25,10 @@ Route::controller(FundamentalPatternsController::class)
 		Route::get('property-container', 'propertyContainer')->name('property-container');
 		Route::get('delegation', 'delegation')->name('delegation');
 		Route::get('event-chanale', 'eventChanale')->name('event-chanale');
+});
+
+Route::controller(CreationalPatternsController::class)
+	->prefix('creational')
+	->group(function () {
+		// Route::get('event-chanale', 'eventChanale')->name('event-chanale');
 });

@@ -7,7 +7,7 @@ use Illuminate\Contracts\View\Factory;
 use App\DesignPaterns\Fundamental\Delegation\AppMessenger;
 use App\DesignPaterns\Fundamental\EventChannel\EventChanaleProgramm;
 use App\DesignPaterns\Fundamental\PropertyContainer\ObjectClass;
-
+use Barryvdh\Debugbar\Facades\Debugbar;
 
 class FundamentalPatternsController extends Controller
 {
@@ -15,20 +15,20 @@ class FundamentalPatternsController extends Controller
 	public function propertyContainer(): View|Factory
 	{
 		$object = new ObjectClass();
-		dump($object);
+		Debugbar::addMessage($object);
 		
 		$object->addProperty('prop_1', 'string');
 		$object->addProperty('prop_2', 123);
-		dump($object);
+		Debugbar::addMessage($object);
 		
 		$object->setProperty('prop_1', 'other');
-		dump($object);
+		Debugbar::addMessage($object);
 		
 		$object->removeProperty('prop_1');
-		dump($object);
+		Debugbar::addMessage($object);
 		
 		$object->removeProperties();
-		dump($object);
+		Debugbar::addMessage($object);
 
 		return view('welcome');
 	}
@@ -37,10 +37,10 @@ class FundamentalPatternsController extends Controller
 	public function delegation(): View|Factory
 	{
 		$messenger = new AppMessenger();
-		dump($messenger->info());
+		Debugbar::addMessage($messenger->info());
 		
 		$messenger->toSms();
-		dump($messenger->info());
+		Debugbar::addMessage($messenger->info());
 		
 		return view('welcome');
 	}
@@ -48,7 +48,7 @@ class FundamentalPatternsController extends Controller
 
 	public function eventChanale(): View|Factory
 	{
-		(new EventChanaleProgramm())->run();
+		(new EventChanaleProgramm())->run(); // Одно из проявлений фундаментального шаблона проектирования "Интерфейс". Где экземпляр класса EventChanaleProgramm - это интерфейс, который предоставляет простой способ доступа к некоему сложному функционалу посредством метода run().
 
 		return view('welcome');
 	}
