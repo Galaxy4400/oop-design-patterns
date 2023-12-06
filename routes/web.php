@@ -31,4 +31,5 @@ Route::controller(CreationalPatternsController::class)
 	->prefix('creational')
 	->group(function () {
 		Route::get('abstract-factory', 'abstractFactory')->name('abstract-factory');
+		Route::get('factory-method', 'factoryMethod')->name('factory-method');
 });

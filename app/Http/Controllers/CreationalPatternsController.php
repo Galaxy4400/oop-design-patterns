@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\DesignPaterns\Creational\AbstractFactory\Fabrics\ArdekoFurnitureFactory;
 use App\DesignPaterns\Creational\AbstractFactory\Fabrics\ModernFurnitureFactory;
 use App\DesignPaterns\Creational\AbstractFactory\Fabrics\VictorianFurnitureFactory;
+use App\DesignPaterns\Creational\FactoryMethod\Classes\Logistics\RoadLogistic;
+use App\DesignPaterns\Creational\FactoryMethod\Classes\Logistics\SeaLogistic;
 use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
@@ -15,6 +17,7 @@ use Illuminate\Contracts\View\Factory;
  */
 class CreationalPatternsController extends Controller
 {
+
 	public function abstractFactory(): View|Factory
 	{
 		$furnitureFactory = match (request('type')) {
@@ -23,11 +26,25 @@ class CreationalPatternsController extends Controller
 			'ardeko' => new ArdekoFurnitureFactory(),
 			default => new ModernFurnitureFactory(),
 		};
+		
+		Debugbar::addMessage($furnitureFactory::class);
 
 		Debugbar::addMessage(get_class($furnitureFactory->createChair()));
 		Debugbar::addMessage(get_class($furnitureFactory->createSofa()));
 		Debugbar::addMessage(get_class($furnitureFactory->createTable()));
 		
+		return view('welcome');
+	}
+	
+	
+	public function factoryMethod(): View|Factory
+	{
+		$roadLogistic = new RoadLogistic();
+		$seaLogistic = new SeaLogistic();
+
+		Debugbar::addMessage($roadLogistic->planDelivery());
+		Debugbar::addMessage($seaLogistic->planDelivery());
+
 		return view('welcome');
 	}
 }
