@@ -9,5 +9,11 @@
 					<li><a href="{{ route('event-chanale') }}">Event chanale</a></li>
 				</ul>
 			</li>
+			<li>
+				<h2>Creational</h2>
+				<ul>
+					<li><a href="{{ route('abstract-factory') }}">Abstract factory</a></li>
+				</ul>
+			</li>
 		</ul>
 </header>

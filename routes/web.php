@@ -30,5 +30,5 @@ Route::controller(FundamentalPatternsController::class)
 Route::controller(CreationalPatternsController::class)
 	->prefix('creational')
 	->group(function () {
-		// Route::get('event-chanale', 'eventChanale')->name('event-chanale');
+		Route::get('abstract-factory', 'abstractFactory')->name('abstract-factory');
 });
