@@ -12,6 +12,7 @@ use App\DesignPaterns\Creational\FactoryMethod\Classes\Logistics\RoadLogistic;
 use App\DesignPaterns\Creational\AbstractFactory\Fabrics\ArdekoFurnitureFactory;
 use App\DesignPaterns\Creational\AbstractFactory\Fabrics\ModernFurnitureFactory;
 use App\DesignPaterns\Creational\AbstractFactory\Fabrics\VictorianFurnitureFactory;
+use App\DesignPaterns\Creational\Singleton\SingletonClass;
 
 /**
  * Пораждающий шаблон проектирования - это никей алгоритм который позволяет абстрагироваться от прямого создания объекта
@@ -68,6 +69,15 @@ class CreationalPatternsController extends Controller
 		
 		Debugbar::addMessage($someClassObject::class);
 
+		return view('welcome');
+	}
+
+
+	public function singleton(): View|Factory
+	{
+		Debugbar::addMessage(SingletonClass::getInstance());
+		Debugbar::addMessage(SingletonClass::getInstance());
+		
 		return view('welcome');
 	}
 }

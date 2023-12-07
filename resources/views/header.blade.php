@@ -16,6 +16,7 @@
 					<li><a href="{{ route('factory-method') }}">Factory method</a></li>
 					<li><a href="{{ route('static-factory') }}">Static-factory</a></li>
 					<li><a href="{{ route('simple-factory') }}">Simple-factory</a></li>
+					<li><a href="{{ route('singleton') }}">Singleton</a></li>
 				</ul>
 			</li>
 		</ul>

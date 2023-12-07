@@ -34,4 +34,5 @@ Route::controller(CreationalPatternsController::class)
 		Route::get('factory-method', 'factoryMethod')->name('factory-method');
 		Route::get('static-factory', 'staticFactory')->name('static-factory');
 		Route::get('simple-factory', 'simpleFactory')->name('simple-factory');
+		Route::get('singleton', 'singleton')->name('singleton');
 });
