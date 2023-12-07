@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
 use Barryvdh\Debugbar\Facades\Debugbar;
+use App\DesignPaterns\Creational\SimpleFactory\SomeClassFactory;
+use App\DesignPaterns\Creational\StaticFactory\FurnitureFactory;
 use App\DesignPaterns\Creational\FactoryMethod\Classes\Logistics\SeaLogistic;
 use App\DesignPaterns\Creational\FactoryMethod\Classes\Logistics\RoadLogistic;
 use App\DesignPaterns\Creational\AbstractFactory\Fabrics\ArdekoFurnitureFactory;
 use App\DesignPaterns\Creational\AbstractFactory\Fabrics\ModernFurnitureFactory;
 use App\DesignPaterns\Creational\AbstractFactory\Fabrics\VictorianFurnitureFactory;
-
 
 /**
  * Пораждающий шаблон проектирования - это никей алгоритм который позволяет абстрагироваться от прямого создания объекта
@@ -44,6 +45,28 @@ class CreationalPatternsController extends Controller
 
 		$seaLogistic = new SeaLogistic();
 		Debugbar::addMessage($seaLogistic->planDelivery());
+
+		return view('welcome');
+	}
+
+
+	public function staticFactory(): View|Factory
+	{
+		$furnitureFactory = FurnitureFactory::build();
+		
+		Debugbar::addMessage($furnitureFactory::class);
+
+		return view('welcome');
+	}
+
+
+	public function simpleFactory(): View|Factory
+	{
+		$someClassFactory = new SomeClassFactory();
+
+		$someClassObject = $someClassFactory->build();
+		
+		Debugbar::addMessage($someClassObject::class);
 
 		return view('welcome');
 	}
