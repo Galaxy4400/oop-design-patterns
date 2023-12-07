@@ -21,7 +21,7 @@ abstract class Logistic
 
 	public function planDelivery()
 	{
-		Debugbar::addMessage('Пран доставки грузов ' . static::class);
+		Debugbar::addMessage('План доставки грузов ' . static::class);
 
 		$this->transport->deliver();
 	}

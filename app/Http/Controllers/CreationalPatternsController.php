@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\View;
+use Illuminate\Contracts\View\Factory;
+use Barryvdh\Debugbar\Facades\Debugbar;
+use App\DesignPaterns\Creational\FactoryMethod\Classes\Logistics\SeaLogistic;
+use App\DesignPaterns\Creational\FactoryMethod\Classes\Logistics\RoadLogistic;
 use App\DesignPaterns\Creational\AbstractFactory\Fabrics\ArdekoFurnitureFactory;
 use App\DesignPaterns\Creational\AbstractFactory\Fabrics\ModernFurnitureFactory;
 use App\DesignPaterns\Creational\AbstractFactory\Fabrics\VictorianFurnitureFactory;
-use App\DesignPaterns\Creational\FactoryMethod\Classes\Logistics\RoadLogistic;
-use App\DesignPaterns\Creational\FactoryMethod\Classes\Logistics\SeaLogistic;
-use Barryvdh\Debugbar\Facades\Debugbar;
-use Illuminate\Contracts\View\View;
-use Illuminate\Contracts\View\Factory;
 
 
 /**
@@ -40,9 +40,9 @@ class CreationalPatternsController extends Controller
 	public function factoryMethod(): View|Factory
 	{
 		$roadLogistic = new RoadLogistic();
-		$seaLogistic = new SeaLogistic();
-
 		Debugbar::addMessage($roadLogistic->planDelivery());
+
+		$seaLogistic = new SeaLogistic();
 		Debugbar::addMessage($seaLogistic->planDelivery());
 
 		return view('welcome');
