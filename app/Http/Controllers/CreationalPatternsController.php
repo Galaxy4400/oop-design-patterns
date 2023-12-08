@@ -12,6 +12,8 @@ use App\DesignPaterns\Creational\FactoryMethod\Classes\Logistics\RoadLogistic;
 use App\DesignPaterns\Creational\AbstractFactory\Fabrics\ArdekoFurnitureFactory;
 use App\DesignPaterns\Creational\AbstractFactory\Fabrics\ModernFurnitureFactory;
 use App\DesignPaterns\Creational\AbstractFactory\Fabrics\VictorianFurnitureFactory;
+use App\DesignPaterns\Creational\Multiton\MultitonClass;
+use App\DesignPaterns\Creational\Multiton\MultitonClassChild;
 use App\DesignPaterns\Creational\Singleton\SingletonClass;
 
 /**
@@ -77,6 +79,19 @@ class CreationalPatternsController extends Controller
 	{
 		Debugbar::addMessage(SingletonClass::getInstance());
 		Debugbar::addMessage(SingletonClass::getInstance());
+		
+		return view('welcome');
+	}
+
+
+	public function multiton(): View|Factory
+	{
+		Debugbar::addMessage(MultitonClass::getInstance('mysql'));
+		Debugbar::addMessage(MultitonClass::getInstance('mongo'));
+		Debugbar::addMessage(MultitonClass::getInstance('mysql'));
+		Debugbar::addMessage(MultitonClass::getInstance('mongo'));
+		Debugbar::addMessage(MultitonClassChild::getInstance('mongo'));
+		Debugbar::addMessage(MultitonClassChild::getInstance('mongo'));
 		
 		return view('welcome');
 	}

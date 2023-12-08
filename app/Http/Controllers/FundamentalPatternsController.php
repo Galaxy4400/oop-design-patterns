@@ -9,6 +9,7 @@ use App\DesignPaterns\Fundamental\EventChannel\EventChanaleProgramm;
 use App\DesignPaterns\Fundamental\PropertyContainer\ObjectClass;
 use Barryvdh\Debugbar\Facades\Debugbar;
 
+
 class FundamentalPatternsController extends Controller
 {
 

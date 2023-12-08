@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\CreationalPatternsController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BehavioralPatternsController;
+use App\Http\Controllers\CreationalPatternsController;
 use App\Http\Controllers\FundamentalPatternsController;
 
 /*
@@ -35,4 +36,11 @@ Route::controller(CreationalPatternsController::class)
 		Route::get('static-factory', 'staticFactory')->name('static-factory');
 		Route::get('simple-factory', 'simpleFactory')->name('simple-factory');
 		Route::get('singleton', 'singleton')->name('singleton');
+		Route::get('multiton', 'multiton')->name('multiton');
+});
+
+Route::controller(BehavioralPatternsController::class)
+	->prefix('behavioral')
+	->group(function () {
+		Route::get('strategy', 'strategy')->name('strategy');
 });

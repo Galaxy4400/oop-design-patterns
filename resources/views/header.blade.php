@@ -17,6 +17,13 @@
 					<li><a href="{{ route('static-factory') }}">Static-factory</a></li>
 					<li><a href="{{ route('simple-factory') }}">Simple-factory</a></li>
 					<li><a href="{{ route('singleton') }}">Singleton</a></li>
+					<li><a href="{{ route('multiton') }}">Multiton</a></li>
+				</ul>
+			</li>
+			<li>
+				<h2>Behavioral</h2>
+				<ul>
+					<li><a href="{{ route('strategy') }}">Strategy</a></li>
 				</ul>
 			</li>
 		</ul>
