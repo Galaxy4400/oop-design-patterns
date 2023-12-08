@@ -16,10 +16,6 @@ trait MultitonTrait
 
 	public static function getInstance(string $key): static
 	{
-		if (isset(static::$instances[$key])) {
-			return static::$instances[$key];
-		}
-
-		return static::$instances[$key] = new static();
+		return static::$instances[$key] ?? static::$instances[$key] = new static();
 	}
 }

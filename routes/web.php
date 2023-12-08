@@ -37,6 +37,7 @@ Route::controller(CreationalPatternsController::class)
 		Route::get('simple-factory', 'simpleFactory')->name('simple-factory');
 		Route::get('singleton', 'singleton')->name('singleton');
 		Route::get('multiton', 'multiton')->name('multiton');
+		Route::get('builder', 'builder')->name('builder');
 });
 
 Route::controller(BehavioralPatternsController::class)

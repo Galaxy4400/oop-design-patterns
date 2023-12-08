@@ -20,6 +20,6 @@ trait SingletonTrait
 
 	public static function getInstance(): static
 	{
-		return static::$instance ?? (static::$instance = new static());
+		return static::$instance ?? static::$instance = new static();
 	}
 }

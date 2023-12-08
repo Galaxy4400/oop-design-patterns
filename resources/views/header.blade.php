@@ -18,6 +18,7 @@
 					<li><a href="{{ route('simple-factory') }}">Simple-factory</a></li>
 					<li><a href="{{ route('singleton') }}">Singleton</a></li>
 					<li><a href="{{ route('multiton') }}">Multiton</a></li>
+					<li><a href="{{ route('builder') }}">Builder</a></li>
 				</ul>
 			</li>
 			<li>
