@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BehavioralPatternsController;
 use App\Http\Controllers\CreationalPatternsController;
+use App\Http\Controllers\StructuralPatternsController;
 use App\Http\Controllers\FundamentalPatternsController;
 
 /*
@@ -38,6 +39,13 @@ Route::controller(CreationalPatternsController::class)
 		Route::get('singleton', 'singleton')->name('singleton');
 		Route::get('multiton', 'multiton')->name('multiton');
 		Route::get('builder', 'builder')->name('builder');
+});
+
+Route::controller(StructuralPatternsController::class)
+	->prefix('behavioral')
+	->group(function () {
+		Route::get('adapter', 'adapter')->name('adapter');
+		Route::get('facade', 'facade')->name('facade');
 });
 
 Route::controller(BehavioralPatternsController::class)

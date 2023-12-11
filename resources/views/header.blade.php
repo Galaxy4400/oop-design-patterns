@@ -22,6 +22,13 @@
 				</ul>
 			</li>
 			<li>
+				<h2>Structural</h2>
+				<ul>
+					<li><a href="{{ route('adapter') }}">Adapter</a></li>
+					<li><a href="{{ route('facade') }}">Fdapter</a></li>
+				</ul>
+			</li>
+			<li>
 				<h2>Behavioral</h2>
 				<ul>
 					<li><a href="{{ route('strategy') }}">Strategy</a></li>
