@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\DesignPaterns\Structural\Adapter\AppNotification;
+use App\DesignPaterns\Structural\Adapter\Classes\EmailNotification;
+use App\DesignPaterns\Structural\Adapter\Classes\SlackNotification;
+use App\DesignPaterns\Structural\Adapter\Service\SlackApi;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
 use Barryvdh\Debugbar\Facades\Debugbar;
@@ -15,7 +19,14 @@ class StructuralPatternsController extends Controller
 
 	public function adapter(): View|Factory
 	{
-		Debugbar::addMessage('adapter');
+		$emailNotification = new EmailNotification('developers@example.com');
+		AppNotification::note($emailNotification);
+
+		Debugbar::addMessage('');
+
+		$slackApi = new SlackApi("example.com", "XXXXXXXX");
+		$slackNotification = new SlackNotification($slackApi, 'Example.com Developers');
+		AppNotification::note($slackNotification);
 		
 		return view('welcome');
 	}

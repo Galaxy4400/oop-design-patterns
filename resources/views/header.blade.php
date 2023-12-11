@@ -25,7 +25,7 @@
 				<h2>Structural</h2>
 				<ul>
 					<li><a href="{{ route('adapter') }}">Adapter</a></li>
-					<li><a href="{{ route('facade') }}">Fdapter</a></li>
+					<li><a href="{{ route('facade') }}">Facade</a></li>
 				</ul>
 			</li>
 			<li>
