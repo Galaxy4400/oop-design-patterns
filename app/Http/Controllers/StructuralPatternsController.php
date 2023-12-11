@@ -6,6 +6,7 @@ use App\DesignPaterns\Structural\Adapter\AppNotification;
 use App\DesignPaterns\Structural\Adapter\Classes\EmailNotification;
 use App\DesignPaterns\Structural\Adapter\Classes\SlackNotification;
 use App\DesignPaterns\Structural\Adapter\Service\SlackApi;
+use App\DesignPaterns\Structural\Facade\FacadeClass\Computer;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
 use Barryvdh\Debugbar\Facades\Debugbar;
@@ -34,8 +35,10 @@ class StructuralPatternsController extends Controller
 	
 	public function facade(): View|Factory
 	{
-		Debugbar::addMessage('facade');
-		
+		$computer = new Computer();
+
+		$computer->lounch();
+
 		return view('welcome');
 	}
 
