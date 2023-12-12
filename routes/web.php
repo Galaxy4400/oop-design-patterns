@@ -46,6 +46,8 @@ Route::controller(StructuralPatternsController::class)
 	->group(function () {
 		Route::get('adapter', 'adapter')->name('adapter');
 		Route::get('facade', 'facade')->name('facade');
+		Route::get('bridge', 'bridge')->name('bridge');
+		Route::get('composite', 'composite')->name('composite');
 });
 
 Route::controller(BehavioralPatternsController::class)

@@ -26,6 +26,8 @@
 				<ul>
 					<li><a href="{{ route('adapter') }}">Adapter</a></li>
 					<li><a href="{{ route('facade') }}">Facade</a></li>
+					<li><a href="{{ route('bridge') }}">Bridge</a></li>
+					<li><a href="{{ route('composite') }}">Composite</a></li>
 				</ul>
 			</li>
 			<li>

@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\DesignPaterns\Structural\Adapter\AppNotification;
-use App\DesignPaterns\Structural\Adapter\Classes\EmailNotification;
-use App\DesignPaterns\Structural\Adapter\Classes\SlackNotification;
-use App\DesignPaterns\Structural\Adapter\Service\SlackApi;
-use App\DesignPaterns\Structural\Facade\FacadeClass\Computer;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
 use Barryvdh\Debugbar\Facades\Debugbar;
+use App\DesignPaterns\Structural\Adapter\AppNotification;
+use App\DesignPaterns\Structural\Adapter\Service\SlackApi;
+use App\DesignPaterns\Structural\Facade\FacadeClass\Computer;
+use App\DesignPaterns\Structural\Bridge\WithBridge\BridgeDemo;
+use App\DesignPaterns\Structural\Adapter\Classes\EmailNotification;
+use App\DesignPaterns\Structural\Adapter\Classes\SlackNotification;
+use App\DesignPaterns\Structural\Bridge\WithoutBridge\WithoutBridgeDemo;
 
 
 /**
@@ -42,4 +44,22 @@ class StructuralPatternsController extends Controller
 		return view('welcome');
 	}
 
+
+	public function bridge(): View|Factory
+	{
+		(new WithoutBridgeDemo())->run();
+		(new BridgeDemo())->run();
+
+		return view('welcome');
+	}
+
+
+	public function composite(): View|Factory
+	{
+		Debugbar::addMessage('composite');
+
+		return view('welcome');
+	}
+
 }
+
