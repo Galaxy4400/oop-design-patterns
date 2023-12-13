@@ -15,14 +15,14 @@ class Ingredient extends Model implements CompositeItemContract
 	public function calcPrice(): float
 	{
 		if ($this->price) {
-			Debugbar::addMessage("[{$this->id}] {$this->type}::{$this->name} = {$this->price}");
+			Debugbar::debug("[{$this->id}] {$this->type}::{$this->name} = {$this->price}");
 			
 			return $this->price;
 		}
 		
 		$this->price = Arr::random([10, 20, 30, 40, 50]);
 		
-		Debugbar::addMessage("[{$this->id}] {$this->type}::{$this->name} = {$this->price}");
+		Debugbar::debug("[{$this->id}] {$this->type}::{$this->name} = {$this->price}");
 
 		return $this->price;
 	}

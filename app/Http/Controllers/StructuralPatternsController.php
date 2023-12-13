@@ -12,7 +12,7 @@ use App\DesignPaterns\Structural\Bridge\WithBridge\BridgeDemo;
 use App\DesignPaterns\Structural\Adapter\Classes\EmailNotification;
 use App\DesignPaterns\Structural\Adapter\Classes\SlackNotification;
 use App\DesignPaterns\Structural\Bridge\WithoutBridge\WithoutBridgeDemo;
-
+use App\DesignPaterns\Structural\Composite\OrderPriceComposite;
 
 /**
  * Структурный шаблон проектирования - предоставляет абстракции для организации классов и объектов в более крупные структуры.
@@ -56,7 +56,7 @@ class StructuralPatternsController extends Controller
 
 	public function composite(): View|Factory
 	{
-		Debugbar::addMessage('composite');
+		(new OrderPriceComposite())->run();
 
 		return view('welcome');
 	}

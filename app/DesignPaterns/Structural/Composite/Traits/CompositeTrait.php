@@ -19,6 +19,8 @@ trait CompositeTrait
 	public function calcPrice(): float
 	{
 		if ($this->price) {
+			Debugbar::addMessage("[{$this->id}] {$this->type}::{$this->name} = {$this->price}");
+			
 			return $this->price;
 		}
 
@@ -29,6 +31,8 @@ trait CompositeTrait
 		}
 
 		Debugbar::addMessage("[{$this->id}] {$this->type}::{$this->name} = {$this->price}");
+
+		Debugbar::addMessage('');
 
 		return $this->price;
 	}

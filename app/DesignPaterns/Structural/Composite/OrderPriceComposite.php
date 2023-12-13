@@ -3,22 +3,25 @@
 namespace App\DesignPaterns\Structural\Composite;
 
 use App\DesignPaterns\Structural\Composite\Classes\ObjectsFactory;
+use Barryvdh\Debugbar\Facades\Debugbar;
 
 class OrderPriceComposite
 {
+	private ObjectsFactory $factory;
+
 	private int $ingredientCount = 10;
 	private array $ingredients = [];
 
-	private int $productCount = 10;
+	private int $productCount = 5;
 	private array $products = [];
 
-	private int $orderCount = 10;
+	private int $orderCount = 2;
 	private array $orders = [];
 
 
-	public function __construct(
-		private ObjectsFactory $factory
-	) {
+	public function __construct()
+	{
+		$this->factory = new ObjectsFactory();
 	}
 
 
@@ -32,13 +35,25 @@ class OrderPriceComposite
 
 	private function initObjects(): void
 	{
-
+		$this->ingredients = $this->factory->createIngredients($this->ingredientCount);
+		$this->products = $this->factory->createProducts($this->productCount, $this->ingredients);
+		$this->orders = $this->factory->createOrders($this->orderCount, $this->products);
 	}
 
 
-	private function calcPrice(): float
+	private function calcPrice(): void
 	{
-		return 1;
+		$result = [];
+
+		foreach ($this->orders as $order) {
+			$result[] = [
+				'order_id' => $order->id,
+				'order_price' => $order->calcPrice(),
+			];
+		}
+
+		Debugbar::addMessage($result);
+		Debugbar::addMessage($this->orders);
 	}
 	
 }

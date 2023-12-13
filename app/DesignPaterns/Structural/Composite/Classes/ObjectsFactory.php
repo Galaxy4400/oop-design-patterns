@@ -51,7 +51,7 @@ class ObjectsFactory
 		$product = new Product();
 
 		$product->id = $id;
-		$product->name = fake()->words();
+		$product->name = fake()->words(3, true);
 
 		foreach ($ingredients as $ingredient) {
 			$product->setChildItem($ingredient);

@@ -10,5 +10,5 @@ class Product extends Model implements CompositeContract
 {
 	use CompositeTrait;
 
-	public string $type = 'Заказ';
+	public string $type = 'Продукт';
 }
