@@ -48,6 +48,7 @@ Route::controller(StructuralPatternsController::class)
 		Route::get('facade', 'facade')->name('facade');
 		Route::get('bridge', 'bridge')->name('bridge');
 		Route::get('composite', 'composite')->name('composite');
+		Route::get('decorator', 'decorator')->name('decorator');
 });
 
 Route::controller(BehavioralPatternsController::class)

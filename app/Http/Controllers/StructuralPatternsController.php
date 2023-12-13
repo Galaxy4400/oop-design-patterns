@@ -7,12 +7,17 @@ use Illuminate\Contracts\View\Factory;
 use Barryvdh\Debugbar\Facades\Debugbar;
 use App\DesignPaterns\Structural\Adapter\AppNotification;
 use App\DesignPaterns\Structural\Adapter\Service\SlackApi;
+use App\DesignPaterns\Structural\Decorator\Classes\TextInput;
 use App\DesignPaterns\Structural\Facade\FacadeClass\Computer;
 use App\DesignPaterns\Structural\Bridge\WithBridge\BridgeDemo;
+use App\DesignPaterns\Structural\Composite\OrderPriceComposite;
+use App\DesignPaterns\Structural\Decorator\TextFormatDecorator;
+use App\DesignPaterns\Structural\Decorator\Classes\MarkdownFormat;
 use App\DesignPaterns\Structural\Adapter\Classes\EmailNotification;
 use App\DesignPaterns\Structural\Adapter\Classes\SlackNotification;
+use App\DesignPaterns\Structural\Decorator\Classes\PlainTextFilter;
 use App\DesignPaterns\Structural\Bridge\WithoutBridge\WithoutBridgeDemo;
-use App\DesignPaterns\Structural\Composite\OrderPriceComposite;
+use App\DesignPaterns\Structural\Decorator\Classes\DangerousHTMLTagsFilter;
 
 /**
  * Структурный шаблон проектирования - предоставляет абстракции для организации классов и объектов в более крупные структуры.
@@ -57,6 +62,30 @@ class StructuralPatternsController extends Controller
 	public function composite(): View|Factory
 	{
 		(new OrderPriceComposite())->run();
+
+		return view('welcome');
+	}
+
+
+	public function decorator(): View|Factory
+	{
+		$dangerousComment = <<<HERE
+			Hello! Nice blog post!
+			Please visit my <a href='http://www.iwillhackyou.com'>homepage</a>.
+			<script src="http://www.iwillhackyou.com/script.js">
+				performXSSAttack();
+			</script>
+			HERE;
+
+		$naiveInput = new TextInput();
+		$plain = new PlainTextFilter($naiveInput);
+		$markdown = new MarkdownFormat($plain);
+		$filteredInput = new DangerousHTMLTagsFilter($markdown);
+		
+		(new TextFormatDecorator())->run($naiveInput, $dangerousComment);
+		(new TextFormatDecorator())->run($plain, $dangerousComment);
+		(new TextFormatDecorator())->run($markdown, $dangerousComment);
+		(new TextFormatDecorator())->run($filteredInput, $dangerousComment);
 
 		return view('welcome');
 	}
