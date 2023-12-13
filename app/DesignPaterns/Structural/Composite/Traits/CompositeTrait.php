@@ -7,7 +7,7 @@ use App\DesignPaterns\Structural\Composite\Contracts\CompositeItemContract;
 
 trait CompositeTrait
 {
-	 private array $compositeItems = [];
+	private array $compositeItems = [];
 
 
 	public function setChildItem(CompositeItemContract $item): void
