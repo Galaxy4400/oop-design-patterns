@@ -7,6 +7,7 @@ use Illuminate\Contracts\View\Factory;
 use Barryvdh\Debugbar\Facades\Debugbar;
 use App\DesignPaterns\Structural\Adapter\AppNotification;
 use App\DesignPaterns\Structural\Adapter\Service\SlackApi;
+use App\DesignPaterns\Structural\Proxy\ProxyDownloaderApp;
 use App\DesignPaterns\Structural\Decorator\Classes\TextInput;
 use App\DesignPaterns\Structural\Facade\FacadeClass\Computer;
 use App\DesignPaterns\Structural\Bridge\WithBridge\BridgeDemo;
@@ -18,6 +19,8 @@ use App\DesignPaterns\Structural\Adapter\Classes\SlackNotification;
 use App\DesignPaterns\Structural\Decorator\Classes\PlainTextFilter;
 use App\DesignPaterns\Structural\Bridge\WithoutBridge\WithoutBridgeDemo;
 use App\DesignPaterns\Structural\Decorator\Classes\DangerousHTMLTagsFilter;
+use App\DesignPaterns\Structural\Proxy\Classes\CachingDownloader;
+use App\DesignPaterns\Structural\Proxy\Classes\SimpleDownloader;
 
 /**
  * Структурный шаблон проектирования - предоставляет абстракции для организации классов и объектов в более крупные структуры.
@@ -87,6 +90,18 @@ class StructuralPatternsController extends Controller
 		(new TextFormatDecorator())->run($markdown, $dangerousComment);
 		(new TextFormatDecorator())->run($filteredInput, $dangerousComment);
 
+		return view('welcome');
+	}
+	
+	
+	public function proxy(): View|Factory
+	{
+		(new ProxyDownloaderApp())->run(new SimpleDownloader());
+
+		Debugbar::addMessage('');
+
+		(new ProxyDownloaderApp())->run(new CachingDownloader());
+		
 		return view('welcome');
 	}
 

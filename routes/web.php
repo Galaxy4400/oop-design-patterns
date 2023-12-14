@@ -49,6 +49,7 @@ Route::controller(StructuralPatternsController::class)
 		Route::get('bridge', 'bridge')->name('bridge');
 		Route::get('composite', 'composite')->name('composite');
 		Route::get('decorator', 'decorator')->name('decorator');
+		Route::get('proxy', 'proxy')->name('proxy');
 });
 
 Route::controller(BehavioralPatternsController::class)
