@@ -14,8 +14,8 @@
 				<ul>
 					<li><a href="{{ route('abstract-factory') }}">Abstract factory</a></li>
 					<li><a href="{{ route('factory-method') }}">Factory method</a></li>
-					<li><a href="{{ route('static-factory') }}">Static-factory</a></li>
-					<li><a href="{{ route('simple-factory') }}">Simple-factory</a></li>
+					<li><a href="{{ route('static-factory') }}">Static factory</a></li>
+					<li><a href="{{ route('simple-factory') }}">Simple factory</a></li>
 					<li><a href="{{ route('singleton') }}">Singleton</a></li>
 					<li><a href="{{ route('multiton') }}">Multiton</a></li>
 					<li><a href="{{ route('builder') }}">Builder</a></li>
@@ -37,6 +37,7 @@
 				<ul>
 					<li><a href="{{ route('strategy') }}">Strategy</a></li>
 					<li><a href="{{ route('observer') }}">Observer</a></li>
+					<li><a href="{{ route('template-method') }}">Template method</a></li>
 				</ul>
 			</li>
 		</ul>

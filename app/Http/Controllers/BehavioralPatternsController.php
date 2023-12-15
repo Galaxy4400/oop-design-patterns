@@ -11,7 +11,8 @@ use App\DesignPaterns\Behavioral\Observer\ObserverB;
 use App\DesignPaterns\Behavioral\Strategy\Navigator;
 use App\DesignPaterns\Behavioral\Strategy\Strategies\CarStrategy;
 use App\DesignPaterns\Behavioral\Strategy\Strategies\BicycleStrategy;
-
+use App\DesignPaterns\Behavioral\TemplateMethod\ConcreteTemplateMethodClassA;
+use App\DesignPaterns\Behavioral\TemplateMethod\ConcreteTemplateMethodClassB;
 
 /**
  * Поведенческий шаблон проектирования - это никей алгоритм который определяет поведение объектов в различных ситуациях, а так же позволяет обеспечить взаимодействие объектов без жесткой связи друг с другом.
@@ -42,6 +43,18 @@ class BehavioralPatternsController extends Controller
 
 		$subject->someBusinessLogic();
 
+		return view('welcome');
+	}
+	
+	
+	public function templateMethod(): View|Factory
+	{
+		(new ConcreteTemplateMethodClassA())->templateMethod();
+		
+		Debugbar::addMessage('');
+
+		(new ConcreteTemplateMethodClassB())->templateMethod();
+		
 		return view('welcome');
 	}
 
