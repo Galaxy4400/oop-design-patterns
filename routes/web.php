@@ -56,4 +56,5 @@ Route::controller(BehavioralPatternsController::class)
 	->prefix('behavioral')
 	->group(function () {
 		Route::get('strategy', 'strategy')->name('strategy');
+		Route::get('observer', 'observer')->name('observer');
 });

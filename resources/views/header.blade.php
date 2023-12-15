@@ -36,6 +36,7 @@
 				<h2>Behavioral</h2>
 				<ul>
 					<li><a href="{{ route('strategy') }}">Strategy</a></li>
+					<li><a href="{{ route('observer') }}">Observer</a></li>
 				</ul>
 			</li>
 		</ul>
