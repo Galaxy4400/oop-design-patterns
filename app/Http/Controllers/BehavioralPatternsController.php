@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
 use Barryvdh\Debugbar\Facades\Debugbar;
+use App\DesignPaterns\Behavioral\Strategy\Navigator;
+use App\DesignPaterns\Behavioral\Strategy\Strategies\CarStrategy;
+use App\DesignPaterns\Behavioral\Strategy\Strategies\BicycleStrategy;
 
 
 /**
@@ -15,7 +18,13 @@ class BehavioralPatternsController extends Controller
 
 	public function strategy(): View|Factory
 	{
-		Debugbar::addMessage('strategy');
+		$navigator = new Navigator();
+
+		$navigator->displayPath();
+
+		$navigator->setStrategy(new BicycleStrategy())->displayPath();
+
+		$navigator->setStrategy(new CarStrategy())->displayPath();
 		
 		return view('welcome');
 	}
