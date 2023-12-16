@@ -73,8 +73,12 @@ Route::controller(CollectionsController::class)
 		Route::get('combine', 'combine')->name('combine');
 		Route::get('contact', 'contact')->name('contact');
 		Route::get('contains', 'contains')->name('contains');
+		Route::get('doesntContain', 'doesntContain')->name('doesntContain');
 		Route::get('count', 'count')->name('count');
 		Route::get('countBy', 'countBy')->name('countBy');
 		Route::get('crossJoin', 'crossJoin')->name('crossJoin');
 		Route::get('diff', 'diff')->name('diff');
+		Route::get('dot', 'dot')->name('dot');
+		Route::get('duplicates', 'duplicates')->name('duplicates');
+		Route::get('each', 'each')->name('each');
 });

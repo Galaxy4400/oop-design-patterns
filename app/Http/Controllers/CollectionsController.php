@@ -152,6 +152,22 @@ class CollectionsController extends Controller
 	}
 
 
+	public function doesntContain(): View|Factory
+	{
+		$collection = collect([1, 2, 3, 4, 5]);
+
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->doesntContain(fn (int $value) => $value < 5);
+		
+		Debugbar::addMessage('Результат: ');
+		Debugbar::addMessage($result);
+		
+		return view('welcome');
+	}
+
+
 	public function count(): View|Factory
 	{
 		$collection = collect([1, 2, 3, 4, 5]);
@@ -213,6 +229,51 @@ class CollectionsController extends Controller
 		
 		Debugbar::addMessage('Результат: ' . (string) $result);
 		Debugbar::addMessage($result);
+		
+		return view('welcome');
+	}
+
+
+	public function dot(): View|Factory
+	{
+		$collection = collect(config('broadcasting'));
+
+		Debugbar::addMessage('Исходная коллекция:');
+		Debugbar::addMessage($collection);
+
+		$result = $collection->dot();
+		
+		Debugbar::addMessage('Результат:');
+		Debugbar::addMessage($result);
+		
+		return view('welcome');
+	}
+
+
+	public function duplicates(): View|Factory
+	{
+		$collection = collect(['a', 'b', 'a', 'c', 'b']);
+
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->duplicates();
+		
+		Debugbar::addMessage('Результат:');
+		Debugbar::addMessage($result);
+		
+		return view('welcome');
+	}
+
+
+	public function each(): View|Factory
+	{
+		$collection = collect([1, 2, 3, 4, 5]);
+
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->each(fn (int $value) => Debugbar::addMessage($value . ' + 1 = ' . $value + 1));
 		
 		return view('welcome');
 	}

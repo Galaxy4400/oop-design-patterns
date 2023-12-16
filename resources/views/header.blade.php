@@ -54,9 +54,13 @@
 		<li><a href="{{ route('combine') }}">combine()</a></li>
 		<li><a href="{{ route('contact') }}">contact()</a></li>
 		<li><a href="{{ route('contains') }}">contains()</a></li>
+		<li><a href="{{ route('doesntContain') }}">doesntContain()</a></li>
 		<li><a href="{{ route('count') }}">count()</a></li>
 		<li><a href="{{ route('countBy') }}">countBy()</a></li>
 		<li><a href="{{ route('crossJoin') }}">crossJoin()</a></li>
 		<li><a href="{{ route('diff') }}">diff()</a></li>
+		<li><a href="{{ route('dot') }}">dot()</a></li>
+		<li><a href="{{ route('duplicates') }}">duplicates()</a></li>
+		<li><a href="{{ route('each') }}">each()</a></li>
 	</ul>
 </header>
