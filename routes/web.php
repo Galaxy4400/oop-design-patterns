@@ -81,4 +81,6 @@ Route::controller(CollectionsController::class)
 		Route::get('dot', 'dot')->name('dot');
 		Route::get('duplicates', 'duplicates')->name('duplicates');
 		Route::get('each', 'each')->name('each');
+		Route::get('ensure', 'ensure')->name('ensure');
+		Route::get('every', 'every')->name('every');
 });

@@ -62,5 +62,7 @@
 		<li><a href="{{ route('dot') }}">dot()</a></li>
 		<li><a href="{{ route('duplicates') }}">duplicates()</a></li>
 		<li><a href="{{ route('each') }}">each()</a></li>
+		<li><a href="{{ route('ensure') }}">ensure()</a></li>
+		<li><a href="{{ route('every') }}">every()</a></li>
 	</ul>
 </header>

@@ -269,7 +269,7 @@ class CollectionsController extends Controller
 	public function each(): View|Factory
 	{
 		$collection = collect([1, 2, 3, 4, 5]);
-
+		
 		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
 		Debugbar::addMessage($collection);
 
@@ -278,5 +278,36 @@ class CollectionsController extends Controller
 		return view('welcome');
 	}
 
+
+	public function ensure(): View|Factory
+	{
+		$collection = collect([1, 2, 3, 4, 5]);
+
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->ensure('int');
+
+		Debugbar::addMessage('Результат:');
+		Debugbar::addMessage('ensure: true');
+		
+		return view('welcome');
+	}
+
+
+	public function every(): View|Factory
+	{
+		$collection = collect([2, 3, 4]);
+
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->every(fn (int $value) => $value % 2 === 0);
+
+		Debugbar::addMessage('Результат:');
+		Debugbar::addMessage($result);
+		
+		return view('welcome');
+	}
 
 }
