@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BehavioralPatternsController;
+use App\Http\Controllers\CollectionsController;
 use App\Http\Controllers\CreationalPatternsController;
 use App\Http\Controllers\StructuralPatternsController;
 use App\Http\Controllers\FundamentalPatternsController;
@@ -58,4 +59,22 @@ Route::controller(BehavioralPatternsController::class)
 		Route::get('strategy', 'strategy')->name('strategy');
 		Route::get('observer', 'observer')->name('observer');
 		Route::get('template-method', 'templateMethod')->name('template-method');
+});
+
+Route::controller(CollectionsController::class)
+	->prefix('collections')
+	->group(function () {
+		Route::get('collect', 'collect')->name('collect');
+		Route::get('all', 'all')->name('all');
+		Route::get('average', 'average')->name('average');
+		Route::get('chunk', 'chunk')->name('chunk');
+		Route::get('chunkWhile', 'chunkWhile')->name('chunkWhile');
+		Route::get('collapse', 'collapse')->name('collapse');
+		Route::get('combine', 'combine')->name('combine');
+		Route::get('contact', 'contact')->name('contact');
+		Route::get('contains', 'contains')->name('contains');
+		Route::get('count', 'count')->name('count');
+		Route::get('countBy', 'countBy')->name('countBy');
+		Route::get('crossJoin', 'crossJoin')->name('crossJoin');
+		Route::get('diff', 'diff')->name('diff');
 });
