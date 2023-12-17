@@ -68,5 +68,19 @@
 		<li><a href="{{ route('filter') }}">filter()</a></li>
 		<li><a href="{{ route('first') }}">first()</a></li>
 		<li><a href="{{ route('firstWhere') }}">firstWhere()</a></li>
+		<li><a href="{{ route('flatten') }}">flatten()</a></li>
+		<li><a href="{{ route('flip') }}">flip()</a></li>
+		<li><a href="{{ route('forget') }}">forget()</a></li>
+		<li><a href="{{ route('forPage') }}">forPage()</a></li>
+		<li><a href="{{ route('get') }}">get()</a></li>
+		<li><a href="{{ route('groupBy') }}">groupBy()</a></li>
+		<li><a href="{{ route('has') }}">has()</a></li>
+		<li><a href="{{ route('hasAny') }}">hasAny()</a></li>
+		<li><a href="{{ route('implode') }}">implode()</a></li>
+		<li><a href="{{ route('intersect') }}">intersect()</a></li>
+		<li><a href="{{ route('intersectAssoc') }}">intersectAssoc()</a></li>
+		<li><a href="{{ route('isEmpty') }}">isEmpty()</a></li>
+		<li><a href="{{ route('isNotEmpty') }}">isNotEmpty()</a></li>
+		<li><a href="{{ route('join') }}">join()</a></li>
 	</ul>
 </header>
