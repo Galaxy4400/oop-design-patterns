@@ -64,5 +64,9 @@
 		<li><a href="{{ route('each') }}">each()</a></li>
 		<li><a href="{{ route('ensure') }}">ensure()</a></li>
 		<li><a href="{{ route('every') }}">every()</a></li>
+		<li><a href="{{ route('except') }}">except()</a></li>
+		<li><a href="{{ route('filter') }}">filter()</a></li>
+		<li><a href="{{ route('first') }}">first()</a></li>
+		<li><a href="{{ route('firstWhere') }}">firstWhere()</a></li>
 	</ul>
 </header>

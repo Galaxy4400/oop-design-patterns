@@ -83,4 +83,8 @@ Route::controller(CollectionsController::class)
 		Route::get('each', 'each')->name('each');
 		Route::get('ensure', 'ensure')->name('ensure');
 		Route::get('every', 'every')->name('every');
+		Route::get('except', 'except')->name('except');
+		Route::get('filter', 'filter')->name('filter');
+		Route::get('first', 'first')->name('first');
+		Route::get('firstWhere', 'firstWhere')->name('firstWhere');
 });

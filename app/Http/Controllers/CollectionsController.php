@@ -310,4 +310,77 @@ class CollectionsController extends Controller
 		return view('welcome');
 	}
 
+
+	public function except(): View|Factory
+	{
+		$collection = collect(['product_id' => 1, 'price' => 100, 'discount' => false]);
+
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->except('price', 'discount');
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+		
+		return view('welcome');
+	}
+
+
+	public function filter(): View|Factory
+	{
+		$collection = collect([1, 2, 3, 4, 5]);
+
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->filter(function (int $value) {
+			return $value > 3;
+		});
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+		
+		return view('welcome');
+	}
+
+
+	public function first(): View|Factory
+	{
+		$collection = collect([1, 2, 3, 4, 5]);
+
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->first(function (int $value) {
+			return $value > 3;
+		});
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+		
+		return view('welcome');
+	}
+
+
+	public function firstWhere(): View|Factory
+	{
+		$collection = collect([
+			['name' => 'Regena', 'age' => null],
+			['name' => 'Linda', 'age' => 14],
+			['name' => 'Diego', 'age' => 23],
+			['name' => 'Linda', 'age' => 84],
+		]);
+
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->firstWhere('age', '>', 50);
+
+		Debugbar::addMessage('Результат: ');
+		Debugbar::addMessage($result);
+		
+		return view('welcome');
+	}
+
 }
