@@ -142,4 +142,7 @@ Route::controller(CollectionsController::class)
 		Route::get('sum', 'sum')->name('sum');
 		Route::get('times', 'times')->name('times');
 		Route::get('toJson', 'toJson')->name('toJson');
+		Route::get('unique', 'unique')->name('unique');
+		Route::get('unless', 'unless')->name('unless');
+		Route::get('when', 'when')->name('when');
 });

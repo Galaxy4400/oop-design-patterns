@@ -121,5 +121,8 @@
 		<li><a href="{{ route('sum') }}">sum()</a></li>
 		<li><a href="{{ route('times') }}">times()</a></li>
 		<li><a href="{{ route('toJson') }}">toJson()</a></li>
+		<li><a href="{{ route('unique') }}">unique()</a></li>
+		<li><a href="{{ route('unless') }}">unless()</a></li>
+		<li><a href="{{ route('when') }}">when()</a></li>
 	</ul>
 </header>

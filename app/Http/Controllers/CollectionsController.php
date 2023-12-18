@@ -1350,6 +1350,60 @@ class CollectionsController extends Controller
 	}
 
 
+	public function unique(): View|Factory
+	{
+		$collection = collect([1, 1, 2, 2, 3, 4, 2]);
+
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->unique();
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function unless(): View|Factory
+	{
+		$collection = collect([1, 2, 3]);
+
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->unless(
+			rand(0, 1),
+			fn (Collection $collect) => $collect->push(true),
+			fn (Collection $collect) => $collect->push(false)
+		);
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function when(): View|Factory
+	{
+		$collection = collect([1, 2, 3]);
+
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->when(rand(0, 1), function (Collection $collection, int $value) {
+			return $collection->push($value);
+		});
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
 
 
 
