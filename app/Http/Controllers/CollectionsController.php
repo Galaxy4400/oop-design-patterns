@@ -1393,9 +1393,11 @@ class CollectionsController extends Controller
 		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
 		Debugbar::addMessage($collection);
 
-		$result = $collection->when(rand(0, 1), function (Collection $collection, int $value) {
-			return $collection->push($value);
-		});
+		$result = $collection->when(
+			rand(0, 1),
+			fn ($collect) => $collect->push(true),
+			fn ($collect) => $collect->push(false),
+		);
 
 		Debugbar::addMessage('Результат: ' . (string) $result);
 		Debugbar::addMessage($result);
