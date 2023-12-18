@@ -250,6 +250,25 @@ class CollectionsController extends Controller
 	}
 
 
+	public function undot(): View|Factory
+	{
+		$collection = collect([
+			'name.first_name' => 'Marie',
+			'name.last_name' => 'Valentine',
+		]);
+
+		Debugbar::addMessage('Исходная коллекция:');
+		Debugbar::addMessage($collection);
+
+		$result = $collection->undot();
+
+		Debugbar::addMessage('Результат:');
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
 	public function duplicates(): View|Factory
 	{
 		$collection = collect(['a', 'b', 'a', 'c', 'b']);
@@ -311,6 +330,22 @@ class CollectionsController extends Controller
 	}
 
 
+	public function only(): View|Factory
+	{
+		$collection = collect(['product_id' => 1, 'price' => 100, 'discount' => false]);
+
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->only('price', 'discount');
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
 	public function except(): View|Factory
 	{
 		$collection = collect(['product_id' => 1, 'price' => 100, 'discount' => false]);
@@ -335,6 +370,24 @@ class CollectionsController extends Controller
 		Debugbar::addMessage($collection);
 
 		$result = $collection->filter(function (int $value) {
+			return $value > 3;
+		});
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function reject(): View|Factory
+	{
+		$collection = collect([1, 2, 3, 4, 5]);
+
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->reject(function (int $value) {
 			return $value > 3;
 		});
 
@@ -795,6 +848,510 @@ class CollectionsController extends Controller
 
 		return view('welcome');
 	}
+
+
+	public function min(): View|Factory
+	{
+		$collection = collect([1, 2, 8, 3, 4, 0, 5]);
+
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->min();
+
+		Debugbar::addMessage('Результат: ');
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function max(): View|Factory
+	{
+		$collection = collect([1, 2, 8, 3, 4, 5]);
+
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->max();
+
+		Debugbar::addMessage('Результат: ');
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function merge(): View|Factory
+	{
+		$collection = collect(['product_id' => 1, 'price' => 100]);
+		$anotherCollection = collect(['price' => 200, 'discount' => false]);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage('Дополнительная коллекция: ' . (string) $anotherCollection);
+		Debugbar::addMessage($collection);
+		Debugbar::addMessage($anotherCollection);
+
+		$result = $collection->merge($anotherCollection);
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function mergeRecursive(): View|Factory
+	{
+		$collection = collect(['product_id' => 1, 'price' => 100]);
+		$anotherCollection = collect(['product_id' => 2, 'price' => 200, 'discount' => false]);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage('Дополнительная коллекция: ' . (string) $anotherCollection);
+		Debugbar::addMessage($collection);
+		Debugbar::addMessage($anotherCollection);
+
+		$result = $collection->mergeRecursive($anotherCollection);
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function replace(): View|Factory
+	{
+		$collection = collect(['Taylor', 'Abigail', 'James']);
+		$anotherCollection = collect([1 => 'Victoria', 3 => 'Finn']);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage('Дополнительная коллекция: ' . (string) $anotherCollection);
+		Debugbar::addMessage($collection);
+		Debugbar::addMessage($anotherCollection);
+
+		$result = $collection->replace($anotherCollection);
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function union(): View|Factory
+	{
+		$collection = collect([1 => ['a'], 2 => ['b']]);
+		$anotherCollection = collect([3 => ['c'], 1 => ['d']]);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage('Дополнительная коллекция: ' . (string) $anotherCollection);
+		Debugbar::addMessage($collection);
+		Debugbar::addMessage($anotherCollection);
+
+		$result = $collection->union($anotherCollection);
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function nth(): View|Factory
+	{
+		$collection = collect(['a', 'b', 'c', 'd', 'e', 'f']);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->nth(4, 1);
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function pad(): View|Factory
+	{
+		$collection = collect(['a', 'b', 'c']);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->pad(5, null);
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function partition(): View|Factory
+	{
+		$collection = collect([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->partition(fn (int $value) => $value % 2);
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function percentage(): View|Factory
+	{
+		$collection = collect([1, 1, 2, 2, 2, 3]);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->percentage(fn ($value) => $value === 1);
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function pluck(): View|Factory
+	{
+		$collection = collect([
+			['product_id' => 'prod-100', 'name' => 'Desk'],
+			['product_id' => 'prod-200', 'name' => 'Chair'],
+		]);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->pluck('name', 'product_id');
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function push(): View|Factory
+	{
+		$collection = collect([1, 2, 3, 4, 5]);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->push(0);
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function pop(): View|Factory
+	{
+		$collection = collect([1, 2, 3, 4, 5]);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->pop();
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function shift(): View|Factory
+	{
+		$collection = collect([1, 2, 3, 4, 5]);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->shift();
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function prepend(): View|Factory
+	{
+		$collection = collect([1, 2, 3, 4, 5]);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->prepend(0);
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function put(): View|Factory
+	{
+		$collection = collect(['product_id' => 'prod-100', 'name' => 'Desk']);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->put('price', 500);
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function pull(): View|Factory
+	{
+		$collection = collect(['product_id' => 'prod-100', 'name' => 'Desk']);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->pull('name');
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function random(): View|Factory
+	{
+		$collection = collect([1, 2, 3, 4, 5]);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->random();
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function range(): View|Factory
+	{
+		$collection = collect();
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->range(10, 20);
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function reduce(): View|Factory
+	{
+		$collection = collect([1, 2, 3]);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->reduce(fn ($carry, $value) => $carry + $value);
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function reverse(): View|Factory
+	{
+		$collection = collect(['a', 'b', 'c', 'd', 'e']);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->reverse();
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function search(): View|Factory
+	{
+		$collection = collect(['a', 'b', 'c', 'd', 'e']);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->search('c');
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function shuffle(): View|Factory
+	{
+		$collection = collect([1, 2, 3, 4, 5]);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->shuffle();
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function slice(): View|Factory
+	{
+		$collection = collect([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->slice(3);
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function splice(): View|Factory
+	{
+		$collection = collect([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->splice(3);
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function sort(): View|Factory
+	{
+		$collection = collect([5, 3, 1, 2, 4]);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->sort();
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function split(): View|Factory
+	{
+		$collection = collect([1, 2, 3, 4, 5]);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->split(3);
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function sum(): View|Factory
+	{
+		$collection = collect([1, 2, 3, 4, 5]);
+ 
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->sum();
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function times(): View|Factory
+	{
+		$times = 10000;
+
+		$collection = Collection::times($times, fn () => rand(1, 10));
+
+		Debugbar::addMessage($collection);
+
+		$result = $collection
+			->countBy()
+			->mapWithKeys(fn ($value, $key) => [$key => $value / $times * 100 . '%'])
+			->sortKeys()
+			->all();
+
+		Debugbar::addMessage('Результат: ');
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function toJson(): View|Factory
+	{
+		$collection = collect(['name' => 'Desk', 'price' => 200]);
+
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->toJson();
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+
+
 
 
 }
