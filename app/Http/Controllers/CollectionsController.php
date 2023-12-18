@@ -17,9 +17,9 @@ class CollectionsController extends Controller
 
 		Debugbar::addMessage('Исходный массив:');
 		Debugbar::addMessage($array);
-		
+
 		$collection = collect($array);
-		
+
 		Debugbar::addMessage('Результат:');
 		Debugbar::addMessage($collection);
 
@@ -33,7 +33,7 @@ class CollectionsController extends Controller
 
 		Debugbar::addMessage('Исходная коллекция:');
 		Debugbar::addMessage($collection);
-		
+
 		Debugbar::addMessage('Результат:');
 		Debugbar::addMessage($collection->all());
 
@@ -47,7 +47,7 @@ class CollectionsController extends Controller
 
 		Debugbar::addMessage('Исходная коллекция:' . (string) $collection);
 		Debugbar::addMessage($collection);
-		
+
 		Debugbar::addMessage('Результат:');
 		Debugbar::addMessage($collection->avg());
 
@@ -61,7 +61,7 @@ class CollectionsController extends Controller
 
 		Debugbar::addMessage('Исходная коллекция:' . (string) $collection);
 		Debugbar::addMessage($collection);
-		
+
 		Debugbar::addMessage('Результат:');
 		Debugbar::addMessage($collection->chunk(6));
 
@@ -75,7 +75,7 @@ class CollectionsController extends Controller
 
 		Debugbar::addMessage('Исходная коллекция:');
 		Debugbar::addMessage($collection);
-		
+
 		$result = $collection->chunkWhile(function (string $value, int $key, Collection $chunk) {
 			return $value === $chunk->last();
 		});
@@ -89,16 +89,16 @@ class CollectionsController extends Controller
 
 	public function collapse(): View|Factory
 	{
-		$collection = collect([ [1, 2, 3], [4, 5, 6], [7, 8, 9] ]);
+		$collection = collect([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
 
 		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
 		Debugbar::addMessage($collection);
 
 		$result = $collection->collapse();
-		
+
 		Debugbar::addMessage('Результат: ' . (string) $result);
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -110,12 +110,12 @@ class CollectionsController extends Controller
 
 		Debugbar::addMessage('Исходная коллекция ключей: ' . (string) $collectionKeys);
 		Debugbar::addMessage('Исходная коллекция значений: ' . (string) $collectionValues);
-		
+
 		$result = $collectionKeys->combine($collectionValues);
 
 		Debugbar::addMessage('Результат: ' . (string) $result);
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -128,10 +128,10 @@ class CollectionsController extends Controller
 		Debugbar::addMessage($collection);
 
 		$result = $collection->concat(['Jane Doe'])->concat(['name' => 'Johnny Doe']);
-		
+
 		Debugbar::addMessage('Результат: ' . (string) $result);
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -144,10 +144,10 @@ class CollectionsController extends Controller
 		Debugbar::addMessage($collection);
 
 		$result = $collection->contains(fn (int $value) => $value > 5);
-		
+
 		Debugbar::addMessage('Результат: ');
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -160,10 +160,10 @@ class CollectionsController extends Controller
 		Debugbar::addMessage($collection);
 
 		$result = $collection->doesntContain(fn (int $value) => $value < 5);
-		
+
 		Debugbar::addMessage('Результат: ');
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -176,10 +176,10 @@ class CollectionsController extends Controller
 		Debugbar::addMessage($collection);
 
 		$result = $collection->count();
-		
+
 		Debugbar::addMessage('Результат: ');
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -192,10 +192,10 @@ class CollectionsController extends Controller
 		Debugbar::addMessage($collection);
 
 		$result = $collection->countBy(fn (string $email) => str($email)->after('@')->value());
-		
+
 		Debugbar::addMessage('Результат: ' . (string) $result);
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -209,10 +209,10 @@ class CollectionsController extends Controller
 		Debugbar::addMessage('Дополнительная коллекция: ' . (string) $anotherCollection);
 
 		$result = $collection->crossJoin($anotherCollection);
-		
+
 		Debugbar::addMessage('Результат: ' . (string) $result);
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -226,10 +226,10 @@ class CollectionsController extends Controller
 		Debugbar::addMessage('Дополнительная коллекция: ' . (string) $anotherCollection);
 
 		$result = $collection->diff($anotherCollection);
-		
+
 		Debugbar::addMessage('Результат: ' . (string) $result);
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -242,10 +242,10 @@ class CollectionsController extends Controller
 		Debugbar::addMessage($collection);
 
 		$result = $collection->dot();
-		
+
 		Debugbar::addMessage('Результат:');
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -258,10 +258,10 @@ class CollectionsController extends Controller
 		Debugbar::addMessage($collection);
 
 		$result = $collection->duplicates();
-		
+
 		Debugbar::addMessage('Результат:');
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -269,12 +269,12 @@ class CollectionsController extends Controller
 	public function each(): View|Factory
 	{
 		$collection = collect([1, 2, 3, 4, 5]);
-		
+
 		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
 		Debugbar::addMessage($collection);
 
 		$result = $collection->each(fn (int $value) => Debugbar::addMessage($value . ' + 1 = ' . $value + 1));
-		
+
 		return view('welcome');
 	}
 
@@ -290,7 +290,7 @@ class CollectionsController extends Controller
 
 		Debugbar::addMessage('Результат:');
 		Debugbar::addMessage('ensure: true');
-		
+
 		return view('welcome');
 	}
 
@@ -306,7 +306,7 @@ class CollectionsController extends Controller
 
 		Debugbar::addMessage('Результат:');
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -322,7 +322,7 @@ class CollectionsController extends Controller
 
 		Debugbar::addMessage('Результат: ' . (string) $result);
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -340,7 +340,7 @@ class CollectionsController extends Controller
 
 		Debugbar::addMessage('Результат: ' . (string) $result);
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -358,7 +358,25 @@ class CollectionsController extends Controller
 
 		Debugbar::addMessage('Результат: ' . (string) $result);
 		Debugbar::addMessage($result);
-		
+
+		return view('welcome');
+	}
+
+
+	public function last(): View|Factory
+	{
+		$collection = collect([1, 2, 3, 4, 5]);
+
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->last(function (int $value) {
+			return $value > 3;
+		});
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
 		return view('welcome');
 	}
 
@@ -379,7 +397,7 @@ class CollectionsController extends Controller
 
 		Debugbar::addMessage('Результат: ');
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -401,7 +419,7 @@ class CollectionsController extends Controller
 
 		Debugbar::addMessage('Результат: ');
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -414,10 +432,10 @@ class CollectionsController extends Controller
 		Debugbar::addMessage($collection);
 
 		$result = $collection->flatten();
-		
+
 		Debugbar::addMessage('Результат:');
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -430,10 +448,10 @@ class CollectionsController extends Controller
 		Debugbar::addMessage($collection);
 
 		$result = $collection->flip();
-		
+
 		Debugbar::addMessage('Результат: ' . (string) $result);
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -446,10 +464,10 @@ class CollectionsController extends Controller
 		Debugbar::addMessage($collection);
 
 		$collection->forget('price');
-		
+
 		Debugbar::addMessage('Результат: ' . (string) $collection);
 		Debugbar::addMessage($collection);
-		
+
 		return view('welcome');
 	}
 
@@ -462,10 +480,10 @@ class CollectionsController extends Controller
 		Debugbar::addMessage($collection);
 
 		$result = $collection->forPage(2, 3);
-		
+
 		Debugbar::addMessage('Результат: ' . (string) $result);
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -478,10 +496,10 @@ class CollectionsController extends Controller
 		Debugbar::addMessage($collection);
 
 		$result = $collection->get('name');
-		
+
 		Debugbar::addMessage('Результат: ');
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -498,10 +516,10 @@ class CollectionsController extends Controller
 		Debugbar::addMessage($collection);
 
 		$result = $collection->groupBy('account_id');
-		
+
 		Debugbar::addMessage('Результат: ');
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -514,10 +532,10 @@ class CollectionsController extends Controller
 		Debugbar::addMessage($collection);
 
 		$result = $collection->has('product');
-		
+
 		Debugbar::addMessage('Результат: ');
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -530,10 +548,10 @@ class CollectionsController extends Controller
 		Debugbar::addMessage($collection);
 
 		$result = $collection->hasAny(['product', 'price']);
-		
+
 		Debugbar::addMessage('Результат: ');
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -549,10 +567,10 @@ class CollectionsController extends Controller
 		Debugbar::addMessage($collection);
 
 		$result = $collection->implode('product', ', ');
-		
+
 		Debugbar::addMessage('Результат: ');
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -565,10 +583,10 @@ class CollectionsController extends Controller
 		Debugbar::addMessage($collection);
 
 		$result = $collection->intersect(['Desk', 'Chair', 'Bookcase']);
-		
+
 		Debugbar::addMessage('Результат: ' . (string) $result);
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -589,10 +607,10 @@ class CollectionsController extends Controller
 			'size' => 'M',
 			'material' => 'polyester',
 		]);
-		
+
 		Debugbar::addMessage('Результат: ' . (string) $result);
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -605,10 +623,10 @@ class CollectionsController extends Controller
 		Debugbar::addMessage($collection);
 
 		$result = $collection->isEmpty();
-		
+
 		Debugbar::addMessage('Результат: ');
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -621,10 +639,10 @@ class CollectionsController extends Controller
 		Debugbar::addMessage($collection);
 
 		$result = $collection->isNotEmpty();
-		
+
 		Debugbar::addMessage('Результат: ');
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
 
@@ -637,11 +655,146 @@ class CollectionsController extends Controller
 		Debugbar::addMessage($collection);
 
 		$result = $collection->join('!', '?');
-		
+
 		Debugbar::addMessage('Результат: ');
 		Debugbar::addMessage($result);
-		
+
 		return view('welcome');
 	}
+
+
+	public function keyBy(): View|Factory
+	{
+		$collection = collect([
+			['product_id' => 'prod-100', 'name' => 'Desk'],
+			['product_id' => 'prod-200', 'name' => 'Chair'],
+		]);
+
+		Debugbar::addMessage('Исходная коллекция: ');
+		Debugbar::addMessage($collection);
+
+		$result = $collection->keyBy('product_id');
+
+		Debugbar::addMessage('Результат: ');
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function keys(): View|Factory
+	{
+		$collection = collect([
+			'prod-100' => ['product_id' => 'prod-100', 'name' => 'Desk'],
+			'prod-200' => ['product_id' => 'prod-200', 'name' => 'Chair'],
+		]);
+
+		Debugbar::addMessage('Исходная коллекция: ');
+		Debugbar::addMessage($collection);
+
+		$result = $collection->keys();
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function map(): View|Factory
+	{
+		$collection = collect([1, 2, 3, 4, 5]);
+
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->map(fn (int $value) => $value * 2);
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function mapSpread(): View|Factory
+	{
+		$collection = collect([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+		$collection = $collection->chunk(2);
+
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->mapSpread(function (int $first, int $second) {
+			return $first + $second;
+		});
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function mapWithKeys(): View|Factory
+	{
+		$collection = collect([
+			[
+				'name' => 'John',
+				'department' => 'Sales',
+				'email' => 'john@example.com',
+			],
+			[
+				'name' => 'Jane',
+				'department' => 'Marketing',
+				'email' => 'jane@example.com',
+			]
+		]);
+
+		Debugbar::addMessage('Исходная коллекция: ');
+		Debugbar::addMessage($collection);
+
+		$result = $collection->mapWithKeys(function (array $item) {
+			return [$item['email'] => $item['name']];
+		});
+
+		Debugbar::addMessage('Результат: ');
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function mapToGroups(): View|Factory
+	{
+		$collection = collect([
+			[
+				'name' => 'John Doe',
+				'department' => 'Sales',
+			],
+			[
+				'name' => 'Jane Doe',
+				'department' => 'Sales',
+			],
+			[
+				'name' => 'Johnny Doe',
+				'department' => 'Marketing',
+			]
+		]);
+
+		Debugbar::addMessage('Исходная коллекция: ');
+		Debugbar::addMessage($collection);
+
+		$result = $collection->mapToGroups(function (array $item) {
+			return [$item['department'] => $item['name']];
+		});
+
+		Debugbar::addMessage('Результат: ');
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
 
 }

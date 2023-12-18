@@ -67,6 +67,7 @@
 		<li><a href="{{ route('except') }}">except()</a></li>
 		<li><a href="{{ route('filter') }}">filter()</a></li>
 		<li><a href="{{ route('first') }}">first()</a></li>
+		<li><a href="{{ route('last') }}">last()</a></li>
 		<li><a href="{{ route('firstWhere') }}">firstWhere()</a></li>
 		<li><a href="{{ route('flatten') }}">flatten()</a></li>
 		<li><a href="{{ route('flip') }}">flip()</a></li>
@@ -82,5 +83,11 @@
 		<li><a href="{{ route('isEmpty') }}">isEmpty()</a></li>
 		<li><a href="{{ route('isNotEmpty') }}">isNotEmpty()</a></li>
 		<li><a href="{{ route('join') }}">join()</a></li>
+		<li><a href="{{ route('keyBy') }}">keyBy()</a></li>
+		<li><a href="{{ route('keys') }}">keys()</a></li>
+		<li><a href="{{ route('map') }}">map()</a></li>
+		<li><a href="{{ route('mapSpread') }}">mapSpread()</a></li>
+		<li><a href="{{ route('mapToGroups') }}">mapToGroups()</a></li>
+		<li><a href="{{ route('mapWithKeys') }}">mapWithKeys()</a></li>
 	</ul>
 </header>

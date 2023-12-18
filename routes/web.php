@@ -86,6 +86,7 @@ Route::controller(CollectionsController::class)
 		Route::get('except', 'except')->name('except');
 		Route::get('filter', 'filter')->name('filter');
 		Route::get('first', 'first')->name('first');
+		Route::get('last', 'last')->name('last');
 		Route::get('firstWhere', 'firstWhere')->name('firstWhere');
 		Route::get('flatMap', 'flatMap')->name('flatMap');
 		Route::get('flatten', 'flatten')->name('flatten');
@@ -102,4 +103,10 @@ Route::controller(CollectionsController::class)
 		Route::get('isEmpty', 'isEmpty')->name('isEmpty');
 		Route::get('isNotEmpty', 'isNotEmpty')->name('isNotEmpty');
 		Route::get('join', 'join')->name('join');
+		Route::get('keyBy', 'keyBy')->name('keyBy');
+		Route::get('keys', 'keys')->name('keys');
+		Route::get('map', 'map')->name('map');
+		Route::get('mapSpread', 'mapSpread')->name('mapSpread');
+		Route::get('mapToGroups', 'mapToGroups')->name('mapToGroups');
+		Route::get('mapWithKeys', 'mapWithKeys')->name('mapWithKeys');
 });
