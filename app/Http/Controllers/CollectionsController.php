@@ -1406,6 +1406,44 @@ class CollectionsController extends Controller
 	}
 
 
+	public function where(): View|Factory
+	{
+		$collection = collect([
+			['product' => 'Desk', 'price' => 200],
+			['product' => 'Chair', 'price' => 100],
+			['product' => 'Bookcase', 'price' => 150],
+			['product' => 'Door', 'price' => 100],
+		]);
+
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage($collection);
+
+		$result = $collection->where('price', 100);
+
+		Debugbar::addMessage('Результат: ');
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
+	public function zip(): View|Factory
+	{
+		$collection = collect(['Chair', 'Desk']);
+		$anotherCollection = collect([100, 200]);
+
+		Debugbar::addMessage('Исходная коллекция: ' . (string) $collection);
+		Debugbar::addMessage('Дополнительная коллекция: ' . (string) $anotherCollection);
+
+		$result = $collection->zip($anotherCollection);
+
+		Debugbar::addMessage('Результат: ' . (string) $result);
+		Debugbar::addMessage($result);
+
+		return view('welcome');
+	}
+
+
 
 
 

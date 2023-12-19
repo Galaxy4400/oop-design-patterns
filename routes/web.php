@@ -145,4 +145,6 @@ Route::controller(CollectionsController::class)
 		Route::get('unique', 'unique')->name('unique');
 		Route::get('unless', 'unless')->name('unless');
 		Route::get('when', 'when')->name('when');
+		Route::get('where', 'where')->name('where');
+		Route::get('zip', 'zip')->name('zip');
 });

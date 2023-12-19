@@ -124,5 +124,7 @@
 		<li><a href="{{ route('unique') }}">unique()</a></li>
 		<li><a href="{{ route('unless') }}">unless()</a></li>
 		<li><a href="{{ route('when') }}">when()</a></li>
+		<li><a href="{{ route('where') }}">where()</a></li>
+		<li><a href="{{ route('zip') }}">zip()</a></li>
 	</ul>
 </header>
